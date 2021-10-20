@@ -1,9 +1,12 @@
+package nathan.company.myapplication.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -13,6 +16,7 @@ import java.util.List;
 import nathan.company.myapplication.R;
 import nathan.company.myapplication.adapter.Adapter;
 import nathan.company.myapplication.model.Filmes;
+import nathan.company.myapplication.onclik.RecyclerItemClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-recyclerView =findViewById(R.id.idRecyclerView);
+         recyclerView =findViewById(R.id.idRecyclerView);
 
 //listafilmes
 this.criarFilmes();
@@ -45,6 +49,32 @@ this.criarFilmes();
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayout.VERTICAL));
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getApplicationContext(), recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Filmes filmes=listaFilmes.get(position);
+
+    Toast.makeText(getApplicationContext(),"precionado"+ filmes.getTituloFilme(),Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Toast.makeText(getApplicationContext(),"precionado longo",Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+
+
+                )
+        );
 
     }
 

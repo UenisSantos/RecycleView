@@ -1,4 +1,4 @@
-package nathan.company.recyclerview.model;
+package nathan.company.myapplication.model;
 
 public class Filmes {
 
