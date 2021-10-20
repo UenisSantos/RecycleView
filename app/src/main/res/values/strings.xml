@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="enviar">enviar</string>
+    <string name="texto">texto</string>
+    <string name="titulo">titulo</string>
+    <string name="ano">ano</string>
+    <string name="genero">genero</string>
+</resources>
